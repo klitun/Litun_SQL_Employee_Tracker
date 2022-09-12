@@ -27,3 +27,19 @@ WHEN I choose to update an employee role
 THEN I am prompted to select an employee to update and their new role and this information is updated in the database 
 ```
 
+## Screenshot
+
+![Screenshot of app.](./Assets/screenshot.png)
+
+## Installation and Usage
+
+Run npm i to install dependancies.
+Set up the database in db with my sql -u root -p then,
+SOURCE schema.sql then,
+SOURCe seeds to fill db.
+Run node server to start.
+
+
+## Video Link
+
+Video on Google Drive
