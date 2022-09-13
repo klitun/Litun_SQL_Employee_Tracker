@@ -34,12 +34,16 @@ THEN I am prompted to select an employee to update and their new role and this i
 ## Installation and Usage
 
 Run npm i to install dependancies.
+
 Set up the database in db with my sql -u root -p then,
+
 SOURCE schema.sql then,
+
 SOURCe seeds to fill db.
+
 Run node server to start.
 
 
 ## Video Link
 
-Video on Google Drive
+[Video on Google Drive](https://drive.google.com/file/d/1O_mLY0-fhWD-PhqtjpqKg0ofsZ_ejKwv/view)

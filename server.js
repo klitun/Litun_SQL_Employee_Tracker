@@ -57,7 +57,7 @@ function startPrompt() {
         case 'Update Employee Role':
           updateEmp();
           break;
-          case 'Update Employee Manager':
+        case 'Update Employee Manager':
           updateManager();
           break;
         case 'View Department Budgets':
@@ -329,11 +329,11 @@ function updateManager() {
       name: `${first_name} ${last_name}`
     }));
     console.table(data);
-    updateRole(employee);
+    updateManagerNew(employee);
   });
 }
 
-function updateRole(employee) {
+function updateManagerNew(employee) {
 
   connection.query(`SELECT employee.id, employee.first_name, employee.last_name FROM employee`, (err, data) => {
     if (err) throw err;
@@ -341,12 +341,12 @@ function updateRole(employee) {
       value: id,
       name: `${first_name} ${last_name}`
     }));
-    console.table(data);
-    getUpdatedRole(employee, managerPick);
+    // console.table(data);
+    getUpdatedManager(employee, managerPick);
   });
 }
 
-function getUpdatedRole(employee, managerPick) {
+function getUpdatedManager(employee, managerPick) {
   inquirer
     .prompt([
       {
@@ -377,8 +377,8 @@ function getUpdatedRole(employee, managerPick) {
 
 //Delete departments, roles, and employees
 
+
 //View the total utilized budget of a department
-//Issue: Only shows first department
 function pickDep() {
 
   connection.query(`SELECT id, name FROM department`, (err, data) => {
@@ -405,17 +405,18 @@ function viewDepBudget(department) {
     ]).then((data) => {
 
 
-let query = `SELECT 
+      let query = `SELECT 
  SUM(role.salary), 
  department.id, 
  department.name AS department
  FROM role
  JOIN department 
  ON department.id = role.department_id
+ WHERE department.id = ?
  `
-     
- 
- connection.query(query, (err, data) => {
+
+
+      connection.query(query, [data.department], (err, data) => {
         if (err) throw err;
         console.table(data),
 
